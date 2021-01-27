@@ -76,64 +76,56 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-      <script>
-   // Login button event handler
-          const loginBtn = document.getElementById ("login");
-          loginBtn.addEventListener ("click", function () {
-
-           const searchArea = document.getElementById ("search-area");
-           searchArea.style.display = "none";
-           const transactionArea = document.getElementById("transaction-area");
-           transactionArea.style.display = "block";
-          })
-    // Deposit button event handler
-
-    const depositButton = document.getElementById ("deposit");
-    depositButton.addEventListener ("click", function () {
-
-        const addDeposit = document.getElementById ("input-deposit").value;
-        const stringToNum = parseFloat (addDeposit);
-
-        updateSpanText ("current-deposit", stringToNum)
-        updateSpanText ("currentBlance", stringToNum)
-        
-        function updateSpanText (id, stringToNum) {
-        const current = document.getElementById (id).innerText;
-        const currentNumber = parseFloat (current);
-        const total = stringToNum + currentNumber;
-        document.getElementById (id).innerText = total;
-    }
-     /*  const correntBlance = document.getElementById ("currentBlance").innerText;
-       var correntBlanceNum = parseFloat(correntBlance);
-       const totalBlance = correntBlanceNum + stringToNum; 
-
+    <script>
+        // Login button event handler
+               const loginBtn = document.getElementById ("login");
+               loginBtn.addEventListener ("click", function () {
+     
+                const searchArea = document.getElementById ("search-area");
+                searchArea.style.display = "none";
+                const transactionArea = document.getElementById("transaction-area");
+                transactionArea.style.display = "block";
+               })
+         // Deposit button event handler
+     
+         const depositButton = document.getElementById ("deposit");
+         depositButton.addEventListener ("click", function () {
+     
+             const addDeposit = document.getElementById ("input-deposit").value;
+             const stringToNum = parseFloat (addDeposit);
+     
+             updateSpanText ("current-deposit", stringToNum)
+             updateSpanText ("currentBlance", stringToNum)
+                  
+            document.getElementById ("input-deposit").value = "";
+         })
+     
        
-       document.getElementById ("currentBlance").innerText = totalBlance;
-       */
-
-       document.getElementById ("input-deposit").value = "";
-    })
-
-
-
-
-    // withdraw button event handler
-     const withdrawButton = getElementById ("withdraw");
-     withdrawButton.addEventListener ("click", function () {
-       
-          const addWithdraw = getElementById ("input-withdraw").value;
-          const stringToNumber = parseFloat (addWithdraw);
-
-          const currentWithdraw = document.getElementById ("current-withdraw").innerText;
-          const currentWithdrawNum = parseFloat (currentWithdraw);
-          const totalWithdraw =  stringToNumber + currentWithdrawNum;
-           
-          document.getElementById ("current-withdraw").innerText = totalWithdraw;
-     })
-
-
-
-      </script>
+         function updateSpanText (id, stringToNum) {
+             const current = document.getElementById (id).innerText;
+             const currentNumber = parseFloat (current);
+             const total = stringToNum + currentNumber;
+             document.getElementById (id).innerText = total;
+         }
+     
+         // withdraw button event handler
+          const withdrawButton = document.getElementById ("withdraw");
+          withdrawButton.addEventListener ("click", function () {
+     
+               const withdrawNum =  stringToNumber("input-withdraw");
+     
+               updateSpanText("current-withdraw", withdrawNum);
+               updateSpanText ("currentBlance",-1 * withdrawNum);
+               document.getElementById ("input-withdraw").value = "";
+     
+             })
+             function stringToNumber(text) { 
+               const string = document.getElementById (text).value;
+               const number = parseFloat (string);
+              return number;
+              }
+     
+           </script>
 
 </body>
 </html>
